@@ -1,7 +1,7 @@
 {
-  "extends": "next/core-web-vitals",
-  "rules": {
-    "no-console": "warn",
-    "react/prop-types": "off"
-  }
+  "extends": "next/core-web-vitals"
+  // "rules": {
+  //   "no-console": "warn",
+  //   "react/prop-types": "off"
+  // }
 }
