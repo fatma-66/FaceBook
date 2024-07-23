@@ -1,95 +1,64 @@
+'use client'
 import Image from "next/image";
 import styles from "./page.module.css";
+import { useSelector } from "react-redux";
+import { getAllPosts } from "@/lib/postsSlice";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import SinglePost from "./_component/singlepost/page";
+import { Box, Grid } from "@mui/material";
+import RestartAltIcon from '@mui/icons-material/RestartAlt';
+import { useRouter } from "next/navigation";
+import { getLoggedUserData } from "@/lib/userslice";
+import * as React from 'react';
+import CircularProgress from '@mui/material/CircularProgress';
+
+
+
 
 export default function Home() {
-  return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+ const router = useRouter()
+let dispatch = useDispatch<any>()
+ let {count} = useSelector((state:any)=> state.counter)
+ let {allPosts,isLoading,isError} = useSelector((state:any)=> state.posts)
+ let {userData} = useSelector((state:any)=> state.users)
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+ useEffect(()=>{
+  dispatch(getAllPosts())
+ },[])
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  );
+
+
+
+
+if (!localStorage.getItem('userToken')) {
+  router.push('/login')
+}
+
+
+
+  return  <>
+    
+     
+      <Box>
+{
+isLoading?<h4 style={{textAlign:"center",padding:"50px 0px"}}><CircularProgress/></h4>:
+<Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 0 }} 
+  justifyContent="center"
+  alignItems="center"
+  className="grid"
+>
+  {allPosts?.map((post:any)=>
+  <Grid key={post._id}  item xs={4}><SinglePost postdetails={post} userDetalis={userData}/></Grid>
+)}
+</Grid>
+    }
+</Box>
+
+  
+    </>
+  
 }

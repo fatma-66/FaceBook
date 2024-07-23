@@ -40,68 +40,85 @@
   --card-border-rgb: 131, 134, 135;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-
-    --primary-glow: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
-    --secondary-glow: linear-gradient(
-      to bottom right,
-      rgba(1, 65, 255, 0),
-      rgba(1, 65, 255, 0),
-      rgba(1, 65, 255, 0.3)
-    );
-
-    --tile-start-rgb: 2, 13, 46;
-    --tile-end-rgb: 2, 5, 19;
-    --tile-border: conic-gradient(
-      #ffffff80,
-      #ffffff40,
-      #ffffff30,
-      #ffffff20,
-      #ffffff10,
-      #ffffff10,
-      #ffffff80
-    );
-
-    --callout-rgb: 20, 20, 20;
-    --callout-border-rgb: 108, 108, 108;
-    --card-rgb: 100, 100, 100;
-    --card-border-rgb: 200, 200, 200;
-  }
-}
-
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
+
+nav{
+  background-color: black;
+  display: flex;
+  justify-content: space-around;
+  padding:10px;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-a {
-  color: inherit;
+nav a{
+  color: white;
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+
+.comment{
+  background-color: #f1f1f1;
+ padding:3px 1px;
+  border-radius: 10px;
+  margin: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+
+.form-control{
+  width: 100%;
+  border:solid 1px rgba(0,0,0,0.5);
+  padding:5px;
+  margin: 5px;
+  border-radius: 5px;
+  resize: none;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+
+
+.grid{
+  padding: 50px;
+}
+
+.btn{
+  background-color: #f1f1f1;
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin: 5px;
+  border: none;
+  display: block;
+  -webkit-border-radius: 10px;
+  
+
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+
+button .hover:hover{
+  background-color:transparent;
+}
+
+.profile-pho{
+  width:100%;
+  height: 500px;
+  contain:content;
+  object-fit:fill;
+ 
+  
+}
+.hov{
+  background-color:transparent;
 }
