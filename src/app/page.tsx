@@ -25,7 +25,7 @@ let dispatch = useDispatch<any>()
 
  useEffect(()=>{
   dispatch(getAllPosts())
- },[])
+ },[dispatch])
 
 
 

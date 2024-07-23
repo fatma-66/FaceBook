@@ -8,6 +8,7 @@ import { RestartAlt, RestartAltSharp } from '@mui/icons-material';
 import { getUserPosts } from '@/lib/postsSlice';
 import SingleUserPost from '../_component/singleuserpost/page';
 import CircularProgress from '@mui/material/CircularProgress';
+import Image from 'next/image';
 
 
 
@@ -39,7 +40,7 @@ let dispatch = useDispatch()
     
 
 <div className='profile-pho'>
-    <img src={userData?.photo} style={{width:'100%',height:'100%'}} alt='profile' />
+    <Image src={userData?.photo} style={{width:'100%',height:'100%'}} alt='profile' />
 
 
 </div>
