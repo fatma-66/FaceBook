@@ -1,7 +1,7 @@
 'use client'
 import React from 'react';
 import { Box, Button, FormControl, FormControlLabel, FormLabel, Input, Radio, RadioGroup, TextField } from '@mui/material';
-import { getUserDetails, resetPassword, userLogin } from '@/lib/userslice';
+// import { getUserDetails, resetPassword, userLogin } from '@/lib/userslice';
 import { Formik, Form, Field, useFormik, ErrorMessage, FormikValues } from 'formik';
 import * as yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
@@ -28,7 +28,7 @@ let dispatch = useDispatch<any>();
 
   const handleReset = async(formValues:any) => {
 
-      dispatch(resetPassword(formValues));
+      // dispatch(resetPassword(formValues));
     
 
   
