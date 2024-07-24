@@ -12,14 +12,15 @@ import { addComment, getAllPosts } from '@/lib/postsSlice';
 import { useRouter } from 'next/navigation';
 import { useDispatch, useSelector } from 'react-redux';
 import { Router } from 'next/router';
+import { Dispatch } from '@reduxjs/toolkit';
 
 export default function Comment({postData}:any) {
 
 let router = useRouter()
-let dispatch = useDispatch()
+const dispatch = useDispatch<any>()
 let {allPosts,isLoading,isError} = useSelector((state:any)=> state.posts)
 
- async function handleSubmit(e:Event){
+ async function handleSubmit(e:any){
         e.preventDefault();
        
     const content = e.currentTarget?.content.value;
@@ -29,10 +30,7 @@ const formData = {
   "post":post
 }
   
-console.log('postData:', postData);  
-console.log('postData._id:', postData._id);  
-
- await  dispatch(addComment(formData));
+ dispatch(addComment(formData));
     router.refresh()
     handleClose();     
     }

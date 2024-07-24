@@ -93,7 +93,7 @@ let dispatch = useDispatch<any>();
             <Button  type="submit" variant="contained" color="primary" style={{ cursor: 'pointer', width: '30%', margin: '20px auto' }}>
             Login Now
             </Button>
-            <Link href='/register' style={{textDecoration:'none',color:'black',margin:'auto'}}>Don't have an account yet? <span style={{color:'black',fontWeight:'bolder'}}> Register</span></Link>
+            <Link href='/register' style={{textDecoration:'none',color:'black',margin:'auto'}}>Don`t have an account yet? <span style={{color:'black',fontWeight:'bolder'}}> Register</span></Link>
           </Form>
         )}
       </Formik>
