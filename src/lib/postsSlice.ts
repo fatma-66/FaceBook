@@ -6,7 +6,7 @@ import { Content } from "next/font/google";
 
 const headers:any = {
     token: 
-   window.localStorage.getItem('userToken') ,
+   localStorage.getItem('userToken') ,
    "Content-Type": "application/json",
     
    
