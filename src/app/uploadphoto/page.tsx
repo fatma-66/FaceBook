@@ -8,6 +8,7 @@ import { useRouter } from 'next/navigation';
 import { Input } from '@mui/material';
 import { getLoggedUserData, UploadImage } from '@/lib/userslice';
 import Image from 'next/image';
+import { inherits } from 'util';
 
 
 
@@ -39,7 +40,7 @@ export default function UploadPhoto (){
 
 
 
-   async function handleSubmit(e:Event){
+   async function handleSubmit(e: React.FormEvent<HTMLFormElement>){
     e.preventDefault()
     let formData =  new  FormData();
     let photo = e.currentTarget?.photo.files[0]
@@ -63,7 +64,7 @@ export default function UploadPhoto (){
     return <>
  <form onSubmit={handleSubmit} style={{width:'80%',margin:'10px auto'}}>
 
- {imagePreview && <Image src={imagePreview} alt='Image Preview' style={{ maxWidth: '100%', marginTop: '10px',border:'1px solid rgba(0,0,0,0.5)' }} />}
+ {imagePreview && <Image src={imagePreview} alt='Image Preview' width={250} height={300} style={{ maxWidth: '100%', marginTop: '10px',border:'1px solid rgba(0,0,0,0.5)' }} />}
  <input type='file' className='btn' name='photo' onChange={handleImageChange} />
 <button type='submit' className='btn' style={{cursor:'pointer'}}>Upload image</button>
  </form>

@@ -15,7 +15,7 @@ export default function Droplist({postdetails}:any) {
 
 
 
- let dispatch = useDispatch()
+ let dispatch = useDispatch<any>()
  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
  const open = Boolean(anchorEl);
  const handleClick = (event: React.MouseEvent<HTMLElement>) => {

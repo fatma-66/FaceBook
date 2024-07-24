@@ -20,7 +20,7 @@ let router = useRouter()
 const dispatch = useDispatch<any>()
 let {allPosts,isLoading,isError} = useSelector((state:any)=> state.posts)
 
- async function handleSubmit(e:any){
+  function handleSubmit(e:any){
         e.preventDefault();
        
     const content = e.currentTarget?.content.value;
@@ -29,6 +29,8 @@ const formData = {
   "content":content,
   "post":post
 }
+
+
   
  dispatch(addComment(formData));
     router.refresh()

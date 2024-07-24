@@ -9,13 +9,13 @@ import { Router, useRouter } from "next/router";
 
 
 let initialState = {loggedin:true,message:'',userData:[],loggedmessage:'',registermessok:'',registermessnot:'',loginmessok:'',loginmessnot:''};
-const headers ={
+const headers:any ={
      token:localStorage.getItem('userToken'),
   
 }
 
 // const[userLoggedin,setuserLoggedin] = useState()
-export const getUserDetails = createAsyncThunk('users/getUserDetails', async (formData) => {
+export const getUserDetails = createAsyncThunk('users/getUserDetails', async (formData:any) => {
     const response = await fetch(`https://linked-posts.routemisr.com/users/signup`, {
         method: 'POST',
         headers: {
@@ -29,7 +29,7 @@ export const getUserDetails = createAsyncThunk('users/getUserDetails', async (fo
     return data;
 });
 
-export const userLogin = createAsyncThunk('users/userLogin', async (formData) => {
+export const userLogin = createAsyncThunk('users/userLogin', async (formData:any) => {
     const response = await fetch(`https://linked-posts.routemisr.com/users/signin`, {
         method: 'POST',
         headers: {
@@ -58,7 +58,7 @@ export const userLogin = createAsyncThunk('users/userLogin', async (formData) =>
 //     return data;
 // });
 
-export const UploadImage = createAsyncThunk('users/UploadImage', async (FormData) => {
+export const UploadImage = createAsyncThunk('users/UploadImage', async (FormData:any) => {
     const response = await  fetch (`https://linked-posts.routemisr.com/users/upload-photo`, {
         
         method: 'PATCH',
@@ -125,7 +125,7 @@ const userSlice = createSlice({
         
         });
 
-        builder.addCase(userLogin.rejected, (state, action) => {
+        builder.addCase(userLogin.rejected, (state:any, action:any) => {
           console.log('Not Logged');
           state.loggedmessage = action?.payload.error
             

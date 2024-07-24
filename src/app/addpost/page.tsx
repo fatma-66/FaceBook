@@ -10,11 +10,12 @@ import { useRouter } from 'next/navigation';
 export default function AddPost (){
    let router = useRouter()
   let dispatch = useDispatch<any>()
-   function handleSubmit(e:Event){
+   function handleSubmit(e: React.FormEvent<HTMLFormElement>){
 e.preventDefault();
 let formData =  new  FormData();
-    let body = e.target?.body.value;
-    let image = e.target?.image.files[0]
+const target = e.target as HTMLFormElement;
+    const body = target?.body.value;
+    let image = target?.image.files[0]
     formData.append('body',body);
     formData.append('image',image);
     dispatch(addPost(formData))

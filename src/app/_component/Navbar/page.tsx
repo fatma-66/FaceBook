@@ -44,7 +44,7 @@ const settings = [  { name: 'Profile', path: '/profile' },
   { name: 'logout', path: '/login' },];
 
   let router = useRouter()
-  let dispatch = useDispatch()
+  let dispatch = useDispatch<any>()
   const [isLoggedIn, setIsLoggedIn] = React.useState<boolean>(!!localStorage.getItem('userToken'));
 
 

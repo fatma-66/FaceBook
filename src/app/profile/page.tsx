@@ -16,7 +16,7 @@ import Image from 'next/image';
 
 export default function Profile (){
 
-let dispatch = useDispatch()
+let dispatch = useDispatch<any>()
     const { userData} = useSelector((state:any) => state.users);
     let {allPosts,isLoading,isError,userPosts} = useSelector((state:any)=> state.posts)
     
@@ -40,7 +40,7 @@ let dispatch = useDispatch()
     
 
 <div className='profile-pho'>
-    <Image src={userData?.photo} style={{width:'100%',height:'100%'}} alt='profile' />
+    <Image  src={userData?.photo} width="100" height={500} style={{width:'100%',height:'100%',objectFit:"fill"}} alt='profile' />
 
 
 </div>

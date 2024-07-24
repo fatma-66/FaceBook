@@ -45,7 +45,7 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
 }));
 
 export default function SinglePost({postdetails}:any) {
-  let dispatch = useDispatch()
+  let dispatch = useDispatch<any>()
   let {allPosts,comments} = useSelector((state:any)=> state.posts)
 
   const [expanded, setExpanded] = React.useState(false);

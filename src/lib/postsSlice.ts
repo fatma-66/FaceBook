@@ -1,16 +1,22 @@
+'use client'
+
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getLoggedUserData } from "./userslice";
 import { Content } from "next/font/google";
-const headers = {
+
+const headers:any = {
     token: 
-   localStorage.getItem('userToken') ,
+   window.localStorage.getItem('userToken') ,
    "Content-Type": "application/json",
+    
+   
 }
 
-const headerss = {
+const headerss:any = {
     token: 
    localStorage.getItem('userToken') ,
    "Content-Type": "application/json",
+  "Accept": "application/json",
 }
 
 
@@ -19,7 +25,7 @@ const headerss = {
 let initialState = {allPosts:[],userPosts:[],isLoading:true,isError:null,comments:[]}
 
 export let getAllPosts = createAsyncThunk('posts/getAllPosts',async ()=>{
-    let response = await fetch(`https://linked-posts.routemisr.com/posts?limit=50`,{
+    const response = await fetch(`https://linked-posts.routemisr.com/posts?limit=50`,{
         method:'GET',
         headers:headers,
           
@@ -31,7 +37,7 @@ export let getAllPosts = createAsyncThunk('posts/getAllPosts',async ()=>{
     
 });
 
-export let addPost = createAsyncThunk('posts/addPost',async (FormData)=>{
+export let addPost = createAsyncThunk('posts/addPost',async (FormData:any)=>{
     let response = await fetch(`https://linked-posts.routemisr.com/posts`,{
         body:FormData,
         method:'POST',
@@ -44,7 +50,7 @@ export let addPost = createAsyncThunk('posts/addPost',async (FormData)=>{
 })
 
 
-export let removepost = createAsyncThunk('posts/removepost',async (PostID)=>{
+export let removepost = createAsyncThunk('posts/removepost',async (PostID:any)=>{
     let response = await fetch(`https://linked-posts.routemisr.com/posts/${PostID}`,{
        method:'DELETE',
         headers:headerss
@@ -55,7 +61,7 @@ export let removepost = createAsyncThunk('posts/removepost',async (PostID)=>{
     
 })
 
-export const getUserPosts = createAsyncThunk('posts/getUserPosts', async (userId) => {
+export const getUserPosts = createAsyncThunk('posts/getUserPosts', async (userId:any) => {
     const response = await fetch(`https://linked-posts.routemisr.com/users/${userId}/posts?limit=4`, {
         headers:headers,
         
@@ -69,8 +75,8 @@ export const getUserPosts = createAsyncThunk('posts/getUserPosts', async (userId
     return data;
 });
 
-export let addComment = createAsyncThunk('posts/addComment',async (formData)=>{
-    let response = await fetch(`https://linked-posts.routemisr.com/comments`,{
+export let addComment = createAsyncThunk('posts/addComment',async (formData:any)=>{
+   const response = await fetch(`https://linked-posts.routemisr.com/comments`,{
         body:JSON.stringify(formData),
         method:'POST',
         headers:headerss,
@@ -84,7 +90,7 @@ export let addComment = createAsyncThunk('posts/addComment',async (formData)=>{
     
 })
 
-export const getUserComments = createAsyncThunk('posts/getUserComments', async (postId) => {
+export const getUserComments = createAsyncThunk('posts/getUserComments', async (postId:any) => {
     const response = await fetch(`https://linked-posts.routemisr.com/posts/${postId}/comments`, {
         headers:headers,
         
@@ -98,7 +104,7 @@ export const getUserComments = createAsyncThunk('posts/getUserComments', async (
     return data;
 });
 
-export let removecomment = createAsyncThunk('posts/removecomment',async (commentID)=>{
+export let removecomment = createAsyncThunk('posts/removecomment',async (commentID:any)=>{
     let response = await fetch(`https://linked-posts.routemisr.com/comments/${commentID}`,{
        method:'DELETE',
         headers:headerss
@@ -123,16 +129,16 @@ let postsSlice = createSlice({
         state.isLoading = true;
      }),
    
-     builder.addCase(addPost.fulfilled,(state,action)=>{
+     builder.addCase(addPost.fulfilled,(state:any,action)=>{
         console.log('added');
         state.isLoading = false;
         state.allPosts.push(action.payload) ;
         
      });
 
-     builder.addCase(removepost.fulfilled,(state,action)=>{
+     builder.addCase(removepost.fulfilled,(state:any,action)=>{
         console.log('removed');
-        state.userPosts = state.userPosts.filter(post => post._id !== action.payload.id);
+        state.userPosts = state.userPosts.filter((post:any) => post._id !== action.payload.id);
         
         
        
@@ -164,10 +170,10 @@ let postsSlice = createSlice({
         
         });
 
-        builder.addCase(removecomment.fulfilled, (state, action) => {
+        builder.addCase(removecomment.fulfilled, (state:any, action) => {
         
             console.log(action.payload);
-            state.comments = state.comments.filter(comment => comment._id !== action.payload.id);
+            state.comments = state.comments.filter((comment:any) => comment._id !== action.payload.id);
             
     
             
