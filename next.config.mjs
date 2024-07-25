@@ -4,8 +4,8 @@ const nextConfig = {
     images: {
       unoptimized: true,
 },
-basePath: process.env.NODE_ENV === 'production' ? '/FaceBook' : '',
-assetPrefix: process.env.NODE_ENV === 'production' ? '/FaceBook/' : '',
+// basePath: process.env.NODE_ENV === 'production' ? '/FaceBook' : '',
+// assetPrefix: process.env.NODE_ENV === 'production' ? '/FaceBook/' : '',
 };
 
 export default nextConfig;
