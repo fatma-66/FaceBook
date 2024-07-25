@@ -8,8 +8,6 @@
     "start": "next start",
     "lint": "next lint",
     "vercel-build": "next build"
-    
-   
   },
   "dependencies": {
     "@emotion/cache": "^11.11.0",
